@@ -1,2 +1,2 @@
 # vehicle-parking-app
-SpotKart - a vehicle parking spot booking application.
+SpotKart - A vehicle parking spot booking application.

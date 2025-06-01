@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Bookings - SpotKart
+{% endblock %}
+
+{% block content %}
+<h3 style="display: flex; margin-bottom: 20px; align-items: center; justify-content: center; font-size: 2rem; text-align: center; width: 100%;">
+    Booking History
+</h3>
+{% include 'general/search.html' with context %}
+
+<div class="booked">
+    {% if book %}
+    {% for s in book %}
+    <div class="book">
+        <h3>Spot ID : {{ s.id }}</h3>
+        <p>Loaction Name: {{ s.spot.name }}, {{ s.spot.city }}</p>
+        <p>Vehicle Registration Number: {{ s.car.plate_number }}</p>
+        <p>Date : {{ s.checkout.exit_date }}</p>
+        <p>Time : {{ s.checkout.exit_time.strftime('%H:%M') }}</p>
+        <p>Charges paid: &#8377;{{ s.spot.charges }}/{{ s.spot.time }}hr</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="display: flex; align-items: center; justify-content: center; font-size: larger; text-align: center; width: 100%;">
+        Not found.
+    </p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .booked {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .book {
+        background-color: #f4f4f9;
+        padding: 15px;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 60%;
+        box-sizing: border-box;
+    }
+
+    p {
+        margin: 0px 0;
+        color: #555;
+    }
+
+</style>
+{% endblock %}

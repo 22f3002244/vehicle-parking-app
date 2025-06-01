@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Delete Spot - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Delete Parking Spot</h1>
+<h2 class="text-danger">
+    Are you sure you want to delete <strong>{{spot.name}}</strong>?
+</h2>
+<form method="post" class="form">
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1{
+        text-align: center;
+    }
+    h2 {
+        margin: 32px auto;
+        text-align: center;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Admin Dashboard - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<div class="heading">
+    <h2 class="text-muted">Parking Slots</h2>
+    <div class="nav justify-content-end">
+        <div class="search-custom-style">
+            {% include 'general/search.html' with context %}
+        </div>
+        <a class="btn btn-success" href="{{url_for('spot.add_slot')}}">
+            <i class="fas fa-plus fa-xs"></i>
+            Add
+        </a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Spot Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>No. of spots</th>
+            <th>Charges (per hour)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for spots in spot %}
+        <tr>
+            <td>{{spots.id}}</td>
+            <td>{{spots.name}}</td>
+            <td>{{spots.city}}</td>
+            <td>{{spots.no_of_slots}}</td>
+            <td>{{spots.charges}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{url_for('spot.edit_spot', id=spots.id)}}">
+                    <i class="fas fa-edit fa-xs"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="{{url_for('spot.delete_spot', id=spots.id)}}">
+                    <i class="fas fa-trash fa-xs"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1, h2 {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        vertical-align: middle; 
+        text-align: center;    
+    }
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+</style>
+{% endblock %}

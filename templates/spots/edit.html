@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Edit Spot - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Edit Parking Spot</h1>
+<form method="post" class="form">
+    <label for="id" class="form-label">Spot ID:
+        <input type="number" name="id" id="id" class="form-control" required value="{{spot.id}}" readonly/>
+    </label>
+    <label for="name" class="form-label">Name:
+        <input type="text" name="name" id="name" class="form-control" required value="{{spot.name}}"/>
+    </label>
+    <label for="city" class="form-label">City:
+        <input type="text" name="city" id="city" class="form-control" required value="{{spot.city}}"/>
+    </label>
+    <label for="available" class="form-label">Number of Spots:
+        <input type="text" name="available" id="available" class="form-control" required value="{{spot.no_of_slots}}"/>
+    </label>
+    <label for="charges" class="form-label">Charges:
+        <input type="number" name="charges" id="charges" class="form-control" required value="{{spot.charges}}"/>
+    </label>
+    <input type="submit" value="Save" class="btn btn-success">
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1{
+        text-align: center;
+    }
+    .form{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+{% endblock %}

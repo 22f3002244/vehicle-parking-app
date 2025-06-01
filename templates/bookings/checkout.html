@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Checkout - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Invoice Details</h1>
+<br>
+<div class="heading">
+    <h6>Invoice number  : S123987465</h4>
+    <h6>Date  : {{date}}</h4>
+    <br>
+    <h6>Booking ID  : {{c.id}}</h4>
+    <h6>Name : {{c.user.name}}</h4>
+    <h6>Contact : 7715039001</h4>
+    <h6>Email : vedantkonde36@gmail.com</h4>
+    <h6>Booking Date : {{c.booking_date}}</h4>
+    <h6>Booking Time : {{c.booking_time.strftime('%H:%M')}}</h4>
+    <h6>Check-out Time  : {{time.strftime('%H:%M')}}</h4>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Spot ID</th>
+            <th>Spot Name</th>
+            <th>Spot Charges (per hour)</th>
+            <th>Parking Duration</th>
+            <th>Total Charges</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{c.spot.id}}</td>
+            <td>{{c.spot.name}}, {{c.spot.city}}</td>
+            <td> &#8377;{{c.spot.charges}}</td>
+            <td>{{hour}} hours {{min}} minutes</td>
+            <td> &#8377;{{amount | round(2)}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="{{ url_for('bookings.pay', id=c.id) }}" method="POST" class="pay">
+    <button class="success btn btn-success" >Pay Now</button>
+</form>
+{% endblock %}
+
+
+{% block style %}
+<style>
+    h1{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        vertical-align: middle; 
+        text-align: center;    
+    }
+
+    .pay {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+</style>
+{% endblock %}

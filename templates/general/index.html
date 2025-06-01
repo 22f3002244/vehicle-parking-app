@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+SpotKart - Home
+{% endblock %}
+
+{% block content %}
+{% include 'general/search.html' with context %}
+
+<div class="booked">
+    {% if bookings %}
+    {% for book in bookings %}
+    <h3 style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-align: center; width: 100%;">
+        Active Parking
+    </h3>
+    <hr>
+    <div class="book">
+        <h3>Spot ID : {{ book.id }}</h3>
+        <p>Loaction Name: {{ book.spot.name }}, {{ book.spot.city }}</p>
+        <p>Vehicle Registration Number: {{ book.car.plate_number }}</p>
+        <p>Charges paid: &#8377;{{ book.spot.charges }}/{{ book.spot.time }}hr</p>
+        <div class="book-slot">
+            <form action="{{ url_for('bookings.check_out', id=book.id) }}" method="POST">
+                <button class="success btn btn-success" >Parked Out</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="spots">
+    <h3 style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-align: center; width: 100%; margin-top: 0px;">
+        Find Parking Nearby
+    </h3>
+    {% if spot %}
+    {% for s in spot %}
+    <div class="spot">
+        <h3>{{ s.name }}</h3>
+        <h4>{{ s.city }}</h4>
+        <p>Available: {{ s.no_of_slots }} Slots</p>
+        <p>Charges: &#8377;{{ s.charges }}/{{ s.time }}hr</p>
+        <div class="book-slot">
+            <form action="{{ url_for('bookings.book_slot', id=s.id) }}" method="GET">
+                <button class="submit">Book Slot</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="display: flex; align-items: center; justify-content: center; font-size: larger; text-align: center; width: 100%;">No slots available</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .spots {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .spot {
+        background-color: #f4f4f9;
+        padding: 20px;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 23.5%;
+        box-sizing: border-box;
+    }
+
+    .booked {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .book {
+        background-color: #f4f4f9;
+        padding: 15px;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 60%;
+        box-sizing: border-box;
+    }
+
+    p {
+        margin: 0px 0;
+        color: #555;
+    }
+
+    .success {
+        margin-top: -110px;
+        margin-left: 80%;
+        width: 120px;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    .submit {
+        background-color: #000;
+        color: white;
+        padding: 8px 15px;
+        font-size: 1rem;
+        margin-top: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .submit:hover {
+        background-color: #333;
+    }
+
+    .book-slot {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+{% endblock %}

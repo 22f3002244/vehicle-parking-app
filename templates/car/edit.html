@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Edit Spot - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Edit Parking Spot</h1>
+<form method="post" class="form">
+    <label for="id" class="form-label">Vehicle ID:
+        <input type="number" name="id" id="id" class="form-control" required value="{{car.id}}" readonly/>
+    </label>
+    <label for="vehicle_number" class="form-label">Registration Number:
+        <input type="text" name="vehicle_number" id="vehicle_number" class="form-control" required value="{{car.plate_number}}"/>
+    </label>
+    <label for="name" class="form-label">Name:
+        <input type="text" name="name" id="name" class="form-control" required value="{{car.name}}"/>
+    </label>
+    <label for="model" class="form-label">Model:
+        <input type="text" name="model" id="model" class="form-control" required value="{{car.model}}"/>
+    </label>
+    <label for="color" class="form-label">Color:
+        <input type="text" name="color" id="color" class="form-control" required value="{{car.color}}"/>
+    </label>
+    <label for="uname" class="form-label">User Name:
+        <input type="text" name="uname" id="uname" class="form-control" required value="{{user.name}}" readonly/>
+    </label>
+    <input type="submit" value="Save" class="btn btn-success">
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1{
+        text-align: center;
+    }
+    .form{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+{% endblock %}

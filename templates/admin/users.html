@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Users - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<div class="heading">
+    <h2 class="text-muted">All Users</h2>
+    <div class="search-custom-style">
+        {% include 'general/search.html' with context %}
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Username</th>
+            <th>City</th>
+            <th>Vehicle Reg. No.</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in car%}
+        <tr>
+            <td>{{c.user.id}}</td>
+            <td>{{c.user.username}}</td>
+            <td>{{c.user.city}}</td>
+            <td>{{c.plate_number}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1, h2 {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        vertical-align: middle; 
+        text-align: center;    
+    }
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .search-custom-style {
+        align-items: center;
+        width: 30%;
+    }
+</style>
+{% endblock %}

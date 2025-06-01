@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+My Vehicle - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>My Vehicles</h1>
+<div class="heading">
+    <h2 class="text-muted">All Vehicle</h2>
+    <a class="btn btn-success" href="{{url_for('car.add_car')}}">
+        <i class="fas fa-plus fa-xs"></i>
+        Add
+    </a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Vehicle Id</th>
+            <th>Registration Number</th>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in car %}
+        <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.plate_number}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.model}}</td>
+            <td>{{c.color}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{url_for('car.edit_car', id=c.id)}}">
+                    <i class="fas fa-edit fa-xs"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="{{url_for('car.delete_car', id=c.id)}}">
+                    <i class="fas fa-trash fa-xs"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1, h2 {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        vertical-align: middle; 
+        text-align: center;    
+    }
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+{% endblock %}

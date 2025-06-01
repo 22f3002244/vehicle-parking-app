@@ -57,7 +57,7 @@ class Bookings(db.Model):
     booking_time = db.Column(db.Time, nullable=False)
     is_active = db.Column(db.Boolean, nullable = False, default = True)
 
-    checkout = db.relationship('checkout', backref='booking', uselist=False, lazy=True)
+    checkout = db.relationship('Checkout', backref='booking', uselist=False, lazy=True)
     
 class Checkout(db.Model):
     __tablename__='checkout'

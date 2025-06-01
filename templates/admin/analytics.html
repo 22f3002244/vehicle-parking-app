@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Admin Dashboard - SpotKart
+{% endblock %}
+
+{% block content %}
+<h1>Overall Analysis</h1>
+  <div class="chart-container">
+    <div id="chart1" class="chart-box"></div>
+    <div id="chart2" class="chart-box"></div>
+    <div id="chart3" class="chart-box"></div>
+    <div id="chart4" class="chart-box"></div>
+  </div>
+{% endblock %}
+
+{% block style %}
+<style>
+  h1{
+    text-align: center;
+  }
+  .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  .chart-box {
+    width: 45%;
+    min-width: 300px;
+  }
+</style>
+{% endblock %}
+
+{% block script %}
+
+<script type="application/javascript">
+    Plotly.newPlot('chart1', [{
+      x: {{ cities_1|tojson }},
+      y: {{ counts_1|tojson }},
+      type: 'bar',
+      marker: { color: 'salmon' }
+    }], {
+      title: 'Bookings per City',
+      xaxis: { title: 'City' },
+      yaxis: { title: 'Bookings' }
+    });
+
+    Plotly.newPlot('chart2', [{
+      x: {{ users_2|tojson }},
+      y: {{ counts_2|tojson }},
+      type: 'bar',
+      marker: { color: 'lightblue' }
+    }], {
+      title: 'Bookings per User',
+      xaxis: { title: 'User' },
+      yaxis: { title: 'Bookings' }
+    });
+
+    Plotly.newPlot('chart3', [{
+      x: {{ users_3|tojson }},
+      y: {{ counts_3|tojson }},
+      type: 'bar',
+      marker: { color: 'mediumseagreen' }
+    }], {
+      title: 'Vehicles per User',
+      xaxis: { title: 'User' },
+      yaxis: { title: 'Vehicles' }
+    });
+
+    Plotly.newPlot('chart4', [{
+      x: {{ cities_4|tojson }},
+      y: {{ counts_4|tojson }},
+      type: 'bar',
+      marker: { color: 'goldenrod' }
+    }], {
+      title: 'Available Parking Spots per City',
+      xaxis: { title: 'City' },
+      yaxis: { title: 'Available Spots' }
+    });
+  </script>
+
+{% endblock %}

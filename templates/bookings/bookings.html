@@ -17,7 +17,7 @@ Bookings - SpotKart
         <h3>Spot ID : {{ s.id }}</h3>
         <p>Loaction Name: {{ s.spot.name }}, {{ s.spot.city }}</p>
         <p>Vehicle Registration Number: {{ s.car.plate_number }}</p>
-        <p>Date : {{ s.checkout.exit_date }}</p>
+        <p>Date : {{ s.checkout.exit_date.strftime('%d-%m-%Y') }}</p>
         <p>Time : {{ s.checkout.exit_time.strftime('%H:%M') }}</p>
         <p>Charges paid: &#8377;{{ s.spot.charges }}/{{ s.spot.time }}hr</p>
     </div>

@@ -9,6 +9,8 @@ class User(db.Model):
     username = db.Column(db.String(32), unique=True, nullable=False)
     password_hash = db.Column(db.String(512), nullable=False)
     name = db.Column(db.String(32), nullable=False)
+    contact = db.Column(db.String(32), nullable=False)
+    email = db.Column(db.String(32), nullable=False)
     city = db.Column(db.String(32), nullable=False)
     is_admin = db.Column(db.Boolean, nullable = False, default = False)
 

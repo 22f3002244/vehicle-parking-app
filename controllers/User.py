@@ -125,11 +125,13 @@ def register_post():
     name = request.form.get('name')
     username = request.form.get('username')
     password = request.form.get('password')
+    contact = request.form.get('contact')
+    email = request.form.get('email')
     city = request.form.get('city')
     if User.query.filter_by(username=username).first():
         flash('User with this username already exists. Please choose some other username.8u')
         return redirect(url_for('User.register'))
-    user = User(username=username, password=password, name=name, city=city)
+    user = User(username=username, password=password, name=name, city=city, contact=contact, email=email)
     db.session.add(user)
     db.session.commit()
     flash('User successfully registered.')
@@ -147,9 +149,11 @@ def profile_post():
     username = request.form.get('username')
     name = request.form.get('name')
     city = request.form.get('city')
+    contact = request.form.get('contact')
+    email = request.form.get('email')
     password =  request.form.get('password')
     cpassword = request.form.get('cpassword')
-    if username == ''  or password == '' or cpassword == '':
+    if username == ''  or password == '' or cpassword == '' or contact == '' or email == '':
         flash('Username or password cannot be empty.')
         return redirect(url_for('User.profile'))
     if not user.check_password(cpassword):
@@ -161,6 +165,8 @@ def profile_post():
     user.username = username
     user.name = name
     user.city = city
+    user.contact = contact
+    user.email = email
     user.password = password
     db.session.commit()
     flash('Profile updated successfully.')

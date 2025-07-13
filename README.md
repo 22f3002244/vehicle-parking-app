@@ -32,7 +32,7 @@ SpotKart - A car parking spot booking application.
 * CSRF protection and input validation
 
 ## Folder Structure
-
+'''
 project/
 ├── app.py
 ├── requirements.txt
@@ -53,6 +53,7 @@ project/
     ├── car/
     ├── general/
     └── spots/
+'''
 
 
 ## Core Workflows

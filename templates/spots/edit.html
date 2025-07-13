@@ -5,37 +5,60 @@ Edit Spot - SpotKart
 {% endblock %}
 
 {% block content %}
-<h1>Edit Parking Spot</h1>
-<form method="post" class="form">
-    <label for="id" class="form-label">Spot ID:
-        <input type="number" name="id" id="id" class="form-control" required value="{{spot.id}}" readonly/>
-    </label>
-    <label for="name" class="form-label">Name:
-        <input type="text" name="name" id="name" class="form-control" required value="{{spot.name}}"/>
-    </label>
-    <label for="city" class="form-label">City:
-        <input type="text" name="city" id="city" class="form-control" required value="{{spot.city}}"/>
-    </label>
-    <label for="available" class="form-label">Number of Spots:
-        <input type="text" name="available" id="available" class="form-control" required value="{{spot.no_of_slots}}"/>
-    </label>
-    <label for="charges" class="form-label">Charges:
-        <input type="number" name="charges" id="charges" class="form-control" required value="{{spot.charges}}"/>
-    </label>
-    <input type="submit" value="Save" class="btn btn-success">
+<form method="post">
+    <h3 class="text-center mb-3">Edit Parking Spot</h3>
+  <label for="id" class="form-label w-100">Spot ID:
+    <input type="number" name="id" id="id" class="from-control mb-2" required value="{{spot.id}}" readonly placeholder="Spot ID" />
+  </label>
+
+  <label for="name" class="form-label w-100">Name:
+    <input type="text" name="name" id="name" class="from-control mb-2" required value="{{spot.name}}" placeholder="Name" />
+  </label>
+
+  <label for="city" class="form-label w-100">City:
+    <input type="text" name="city" id="city" class="from-control mb-2" required value="{{spot.city}}" placeholder="City" />
+  </label>
+
+  <label for="available" class="form-label w-100">Number of Spots:
+    <input type="text" name="available" id="available" class="from-control mb-2" required value="{{spot.no_of_slots}}" placeholder="Number of Spots" />
+  </label>
+
+  <label for="charges" class="form-label w-100">Charges:
+    <input type="number" name="charges" id="charges" class="from-control mb-2" required value="{{spot.charges}}" placeholder="Charges (per hour)" />
+  </label>
+
+  <input type="submit" value="Save" class="btn btn-success mt-2 w-100">
 </form>
 {% endblock %}
 
 {% block style %}
 <style>
-    h1{
-        text-align: center;
-    }
-    .form{
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 50px auto 20px auto;
+    max-width: 350px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #000;
+  }
+
+  .from-control {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .form-label {
+    margin-top: 10px;
+    font-weight: bold;
+    width: 100%;
+  }
 </style>
 {% endblock %}

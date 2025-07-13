@@ -5,28 +5,35 @@ Delete Vehicle - SpotKart
 {% endblock %}
 
 {% block content %}
-<h1>Delete Vehicle</h1>
-<h2 class="text-danger">
+<form method="post" class="delete-form">
+  <h3 class="text-center mb-3">Delete Vehicle</h3>
+  <p class="text-danger text-center">
     Are you sure you want to delete <strong>{{car.name}} {{car.model}}</strong>?
-</h2>
-<form method="post" class="form">
-    <input type="submit" value="Delete" class="btn btn-danger">
+  </p>
+  <input type="submit" value="Delete" class="btn btn-danger mt-2 w-100">
 </form>
 {% endblock %}
 
 {% block style %}
 <style>
-    h1{
-        text-align: center;
-    }
-    h2 {
-        margin: 32px auto;
-        text-align: center;
-    }
-    .form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .delete-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 100px auto 20px auto;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #000;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn-danger {
+    width: 100%;
+  }
 </style>
 {% endblock %}

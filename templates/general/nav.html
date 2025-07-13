@@ -27,12 +27,7 @@
                 <a class="nav-link active" href="{{url_for('User.profile')}}">Profile</a>
               </li>
               {% else %}
-              <li class="nav-item">
-                <a class="nav-link active" href="{{url_for('User.login')}}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for('User.Register')}}">Register</a>
-              </li>
+              <li class="nav-item"></li>
               {% endif %}
             </ul>
         </div>

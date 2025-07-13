@@ -9,10 +9,10 @@ SpotKart - Home
 
 <div class="booked">
     {% if bookings %}
-    {% for book in bookings %}
     <h3 style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-align: center; width: 100%;">
         Active Parking
     </h3>
+    {% for book in bookings %}
     <hr>
     <div class="book">
         <h3>Spot ID : {{ book.id }}</h3>

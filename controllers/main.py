@@ -22,4 +22,4 @@ def auth_required(func):
             flash('You need to login first.')
             return redirect(url_for('User.login'))
         return func(*args, **kwargs)
-    return inner
+    return inner 

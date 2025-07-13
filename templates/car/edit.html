@@ -1,44 +1,72 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-Edit Spot - SpotKart
+Edit Vehicle - SpotKart
 {% endblock %}
 
 {% block content %}
-<h1>Edit Parking Spot</h1>
-<form method="post" class="form">
-    <label for="id" class="form-label">Vehicle ID:
-        <input type="number" name="id" id="id" class="form-control" required value="{{car.id}}" readonly/>
-    </label>
-    <label for="vehicle_number" class="form-label">Registration Number:
-        <input type="text" name="vehicle_number" id="vehicle_number" class="form-control" required value="{{car.plate_number}}"/>
-    </label>
-    <label for="name" class="form-label">Name:
-        <input type="text" name="name" id="name" class="form-control" required value="{{car.name}}"/>
-    </label>
-    <label for="model" class="form-label">Model:
-        <input type="text" name="model" id="model" class="form-control" required value="{{car.model}}"/>
-    </label>
-    <label for="color" class="form-label">Color:
-        <input type="text" name="color" id="color" class="form-control" required value="{{car.color}}"/>
-    </label>
-    <label for="uname" class="form-label">User Name:
-        <input type="text" name="uname" id="uname" class="form-control" required value="{{user.name}}" readonly/>
-    </label>
-    <input type="submit" value="Save" class="btn btn-success">
+<form method="post">
+  <h3 class="text-center mb-3">Edit Vehicle Details</h3>
+
+  <label for="id" class="form-label w-100">Vehicle ID:
+    <input type="number" name="id" id="id" class="from-control mb-2" required value="{{car.id}}" readonly placeholder="Vehicle ID" />
+  </label>
+
+  <label for="vehicle_number" class="form-label w-100">Registration Number:
+    <input type="text" name="vehicle_number" id="vehicle_number" class="from-control mb-2" required value="{{car.plate_number}}" placeholder="Registration Number" />
+  </label>
+
+  <label for="name" class="form-label w-100">Car Brand/Make:
+    <input type="text" name="name" id="name" class="from-control mb-2" required value="{{car.name}}" placeholder="e.g., BMW, Toyota" />
+  </label>
+
+  <label for="model" class="form-label w-100">Model:
+    <input type="text" name="model" id="model" class="from-control mb-2" required value="{{car.model}}" placeholder="Car Model" />
+  </label>
+
+  <label for="color" class="form-label w-100">Color:
+    <input type="text" name="color" id="color" class="from-control mb-2" required value="{{car.color}}" placeholder="Color" />
+  </label>
+
+  <label for="uname" class="form-label w-100">Owner Name:
+    <input type="text" name="uname" id="uname" class="from-control mb-2" required value="{{user.name}}" readonly placeholder="User Name" />
+  </label>
+
+  <input type="submit" value="Save" class="btn btn-success mt-2 w-100">
 </form>
 {% endblock %}
 
 {% block style %}
 <style>
-    h1{
-        text-align: center;
-    }
-    .form{
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 50px auto 20px auto;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #000;
+  }
+
+  .from-control {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .form-label {
+    font-weight: bold;
+    width: 100%;
+  }
+
+  h3 {
+    text-align: center;
+  }
 </style>
 {% endblock %}

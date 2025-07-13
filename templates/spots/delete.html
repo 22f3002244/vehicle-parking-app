@@ -5,28 +5,37 @@ Delete Spot - SpotKart
 {% endblock %}
 
 {% block content %}
-<h1>Delete Parking Spot</h1>
-<h2 class="text-danger">
-    Are you sure you want to delete <strong>{{spot.name}}</strong>?
-</h2>
-<form method="post" class="form">
-    <input type="submit" value="Delete" class="btn btn-danger">
+<form method="post">
+  <h3 class="text-center mb-3">Delete Parking Spot</h3>
+
+  <p class="text-center text-danger mb-4">
+    Are you sure you want to delete <strong>{{ spot.name }}, {{ spot.city }}</strong>?
+  </p>
+
+  <input type="submit" value="Delete" class="btn btn-danger w-100">
 </form>
 {% endblock %}
 
 {% block style %}
 <style>
-    h1{
-        text-align: center;
-    }
-    h2 {
-        margin: 32px auto;
-        text-align: center;
-    }
-    .form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 50px auto 20px auto;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #000;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 </style>
 {% endblock %}

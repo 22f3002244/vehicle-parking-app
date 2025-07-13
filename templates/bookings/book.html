@@ -6,41 +6,49 @@ Booking Confirmation - SpotKart
 
 {% block content %}
 <form action="{{ url_for('bookings.book_slot', id=id) }}" method="POST">
-    <input type="hidden" name="user_id" value="{{ user.id }}">
-    <input type="hidden" name="spot_id" value="{{ spot.id }}">
+  <input type="hidden" name="user_id" value="{{ user.id }}">
+  <input type="hidden" name="spot_id" value="{{ spot.id }}">
 
-    <label class="form-label mb-3 fw-bold">Choose your vehicle:</label>
+  <label class="form-label w-100 mb-3 fw-bold text-center">Choose your vehicle:</label>
 
-    {% for v in car %}
-    <label class="input-group mb-3" style="cursor: pointer;">
-        <div class="input-group-text">
-            <input class="form-check-input mt-0" type="radio" name="vehicle_id" value="{{ v.id }}" required>
-        </div>
-        <span class="form-control bg-white">{{ v.name }} ({{ v.plate_number }})</span>
-    </label>
-    {% endfor %}
+  {% for v in car %}
+  <label class="input-group mb-3 w-100" style="cursor: pointer;">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="radio" name="vehicle_id" value="{{ v.id }}" required>
+    </div>
+    <span class="form-control bg-white">{{ v.name }} ({{ v.plate_number }})</span>
+  </label>
+  {% endfor %}
 
-    <button type="submit" class="btn btn-primary mt-3">Confirm Booking</button>
+  <button type="submit" class="btn btn-primary mt-3 w-100">Confirm Booking</button>
 </form>
 {% endblock %}
 
-
 {% block style %}
 <style>
-
-form {
-    margin: 40px auto;
+  form {
+    margin: 60px auto;
     padding: 20px;
-    max-width: 350px;
-    justify-content: center;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.input-group{
+  .input-group {
     border: 1px solid #000;
-}
+    border-radius: 4px;
+  }
 
+  .form-label {
+    font-size: 16px;
+  }
+
+  .form-control {
+    cursor: pointer;
+  }
 </style>
 {% endblock %}

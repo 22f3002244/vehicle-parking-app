@@ -9,30 +9,42 @@ book = Blueprint('bookings', __name__)
 @book.route('/book_slot/<int:id>', methods=['GET', 'POST'])
 @auth_required
 def book_slot(id):
-        user = User.query.get(session['user_id'])
-        car = Car.query.filter_by(user_id=user.id).all()
-        spot = Spots.query.get(id)
+    user = User.query.get(session['user_id'])
+    car = Car.query.filter_by(user_id=user.id).all()
+    spot = Spots.query.get(id)
 
-        if not car:
-            flash("Please add your vehicle before booking a slot.")
-            return redirect(url_for('car.add_car'))
+    if not car:
+        flash("Please add your vehicle before booking a slot.")
+        return redirect(url_for('car.add_car'))
 
-        if request.method == 'POST':
-            vehicle_id = request.form.get('vehicle_id')
-            current= datetime.now()
-            date = current.date()
-            time = current.time()
-
-            spot.no_of_slots -= 1
-
-            booking = Bookings(user_id=user.id, spot_id=spot.id, car_id=vehicle_id,booking_date=date, booking_time=time, is_active=True)
-            db.session.add(booking)
-            db.session.commit()
-
+    if request.method == 'POST':
+        vehicle_id = request.form.get('vehicle_id')
+        active_booking = Bookings.query.filter_by(car_id=vehicle_id, is_active=True).first()
+        if active_booking:
+            flash("This vehicle is already parked with an active booking. Please checkout before booking again.")
             return redirect(url_for('User.index'))
 
-        return render_template('bookings/book.html', user=user, id=id, car=car, spot=spot)
-    
+        current = datetime.now()
+        date = current.date()
+        time = current.time()
+
+        spot.no_of_slots -= 1
+
+        booking = Bookings(
+            user_id=user.id,
+            spot_id=spot.id,
+            car_id=vehicle_id,
+            booking_date=date,
+            booking_time=time,
+            is_active=True
+        )
+        db.session.add(booking)
+        db.session.commit()
+
+        return redirect(url_for('User.index'))
+
+    return render_template('bookings/book.html', user=user, id=id, car=car, spot=spot)
+
 @book.route('/check_out/<int:id>', methods=['POST'])
 @auth_required
 def check_out(id):

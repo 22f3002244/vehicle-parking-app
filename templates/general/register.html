@@ -5,76 +5,41 @@ Sign Up - SpotKart
 {% endblock %}
 
 {% block content %}
-<h1>Sign Up</h1>
 <form method="post">
-    <label for="name" class="form-label">Name :
-        <input type="text" name="name" id="name" class="from-control" required />
-    </label>
-    <label for="username" class="form-label">Username :
-        <input type="text" name="username" id="username" class="from-control" required />
-    </label>
-    <label for="email" class="form-label">Mail Id :
-        <input type="text" name="email" id="email" class="from-control" required />
-    </label>
-    <label for="contact" class="form-label">Contact :
-        <input type="text" name="contact" id="contact" class="from-control" required />
-    </label>
-    <label for="password" class="form-label">Password :
-        <input type="password" name="password" id="password" class="from-control" required />
-    </label>
-    <label for="city" class="form-label">City :
-        <input type="text" name="city" id="city" class="from-control" required />
-    </label>    
-    <input type="submit" value="Register" class="btn btn-success">
+  <h3>Sign Up</h3>
+  <input type="text" name="username" id="username" class="from-control mb-2" placeholder="@username" required />
+  <input type="text" name="name" id="name" class="from-control mb-2" placeholder="Name" required />
+  <input type="text" name="email" id="email" class="from-control mb-2" placeholder="Mail Id" required />
+  <input type="text" name="contact" id="contact" class="from-control mb-2" placeholder="Contact No" required />
+  <input type="password" name="password" id="password" class="from-control mb-2" placeholder="Set Password" required />
+  <input type="text" name="city" id="city" class="from-control mb-2" placeholder="City" required />
+  <input type="submit" value="Register" class="btn btn-success mt-2 w-100">
+  <a class="btn-register mt-2" href="{{url_for('User.login')}}">Go to login</a>
 </form>
 {% endblock %}
 
 {% block style %}
 <style>
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 100px auto 20px auto;
+    max-width: 350px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #000;
+  }
 
-body {
-        background-color: #f9f9f9;
-        font-family: Arial, sans-serif;
-    }
-
-    h1 {
-        margin-top: 64px;
-        text-align: center;
-        color: #333;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        margin: 20px auto;
-        max-width: 350px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-        display: block;
-        margin-bottom: 15px;
-        width: 100%;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .form-label {
-        padding-top: 10px;
-    }
-
-    .from-control {
-        width: 100%;
-        padding: 5px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
+  .from-control {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
 </style>
 {% endblock %}

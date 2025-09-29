@@ -83,7 +83,3 @@ project/
 * Vehicle registration statistics
 * Slot utilization per location
 * Revenue trends
-
-## Project Video Demo
-
-Link: https://drive.google.com/file/d/1x_q0CbEFqPTyPl8PsEaVF7_q0ZcqepG8/view
